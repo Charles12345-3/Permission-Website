@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Little Request</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 80%;
+            max-width: 600px;
+        }
+
+        #name-input-section {
+            margin-bottom: 20px;
+        }
+
+        #greeting-section {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        #permission-section {
+            display: none;
+            margin-bottom: 20px;
+        }
+
+        #image-gallery-container {
+            display: none;
+            overflow-x: auto; /* Enable horizontal scrolling */
+            white-space: nowrap; /* Prevent images from wrapping */
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            padding: 10px;
+        }
+
+        .gallery-image {
+            width: auto; /* Adjust width based on image size */
+            max-height: 300px; /* Optional: Set a maximum height */
+            margin-right: 10px; /* Space between images */
+            border-radius: 4px;
+            display: inline-block; /* Display images in a row */
+        }
+
+        /* Remove margin from the last image */
+        .gallery-image:last-child {
+            margin-right: 0;
+        }
+
+        #questions-section {
+            display: none;
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        #questions-section ol {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        #questions-section li.question {
+            margin-bottom: 5px;
+            padding-bottom: 5px;
+            border-bottom: 1px solid #eee;
+        }
+
+        #questions-section li.question:last-child {
+            border-bottom: none;
+        }
+
+        .enter-button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .enter-button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div id="name-input-section">
+            <h2>An invitation for an Unforgettable Swimming Expericence!</h2>
+            <label for="parents-name">May I know your name?</label>
+            <input type="text" id="parents-name" placeholder="Your name">
+            <button class="enter-button" onclick="greetParents()">Enter</button>
+        </div>
+
+        <div id="greeting-section" style="display: none;">
+            <h2 id="greeting-message"></h2>
+            <button class="enter-button" onclick="showPermission()">Proceed</button>
+        </div>
+
+        <div id="permission-section" style="display: none;">
+            <h2>A Humble Request</h2>
+            <p>We would like to ask for your kind permission to allow your beloved daughter to join us for an overnight swimming trip.</p>
+        </div>
+
+        <div id="image-gallery-container">
+            <h2>Sneak Peek of the Place</h2>
+            <img src="Images/image1.jpg" alt="Resort Image 1" class="gallery-image">
+            <img src="Images/image2.jpg" alt="Resort Image 2" class="gallery-image">
+            <img src="Images/image3.jpg" alt="Resort Image 3" class="gallery-image">
+            <img src="Images/image4.jpg" alt="Resort Image 3" class="gallery-image">
+            <img src="Images/image5.jpg" alt="Resort Image 3" class="gallery-image">
+            </div>
+
+        <div id="questions-section">
+            <h2>Why This Trip Matters</h2>
+            <ol>
+                <li class="question">It's a wonderful opportunity for her to relax and unwind after all of the hardworks she did this school year.</li>
+                <li class="question">This will be a fun and memorable bonding experience with me and her close friends.</li>
+                <li class="question">We will ensure her safety while making the most unforgettable memories.</li>
+                <li class="question">We have planned engaging and enjoyable activities for everyone.</li>
+                <li class="question">Her presence will truly make the gathering more complete and joyful.</li>
+                <h2>May I kindly request your permission?</h2>
+  
+  <form action="#" method="post">
+    <label for="permission">Please select:</label>
+    <select id="permission" name="permission">
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+    </select>
+    <br><br>
+    <input type="submit" value="Submit">
+  </form>
+            </ol>
+        </div>
+    </div>
+
+    <script>
+        function greetParents() {
+            const parentsNameInput = document.getElementById("parents-name");
+            const greetingMessage = document.getElementById("greeting-message");
+            const nameInputSection = document.getElementById("name-input-section");
+            const greetingSection = document.getElementById("greeting-section");
+
+            const parentsName = parentsNameInput.value.trim();
+            if (parentsName) {
+                greetingMessage.textContent = `Dear ${parentsName}, we have a special request for you.`;
+                nameInputSection.style.display = "none";
+                greetingSection.style.display = "block";
+            } else {
+                alert("Please enter your names.");
+            }
+        }
+
+        function showPermission() {
+            const greetingSection = document.getElementById("greeting-section");
+            const permissionSection = document.getElementById("permission-section");
+
+            greetingSection.style.display = "none";
+            permissionSection.style.display = "block";
+
+            setTimeout(() => {
+                document.getElementById("image-gallery-container").style.display = "block";
+                document.getElementById("questions-section").style.display = "block";
+            }, 5000);
+        }
+        
+    </script>
+    
+</body>
+</html>
